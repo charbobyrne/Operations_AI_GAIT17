@@ -1,0 +1,1 @@
+Good work guys. I would make sure to test out different AI models for your pipeline in order to make sure you are getting the wanted output vs the price of running the model.
