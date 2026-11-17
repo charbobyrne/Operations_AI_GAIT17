@@ -1,55 +1,67 @@
 # Operations AI
 
-Operations AI is a grounded process-data assistant. The initial application accepts a CSV, validates one numeric duration column, computes deterministic statistics, and prepares a typed evidence package for a three-stage AI workflow.
+This guide gets the test environment running on Windows.
 
-## Architecture
+## Setup
 
-```text
-Streamlit GUI / FastAPI
-        |
-        v
-Application orchestration
-        |
-        +--> CSV validation --> deterministic statistics
-        |
-        +--> AI analyst --> interpreter --> critic
-        |
-        v
-Typed evidence and result models
-```
+1. Open PowerShell in this repository and create a virtual environment:
 
-The numerical analysis never depends on an LLM. AI stages consume computed evidence through typed schemas and will be implemented behind a single client boundary.
+   ```powershell
+   python -m venv .venv
+   .\.venv\Scripts\Activate.ps1
+   ```
 
-## Local setup
-
-1. Install Python 3.11 or newer.
-2. Create and activate a virtual environment.
-3. Install the project:
+2. Install the project:
 
    ```powershell
    python -m pip install -e ".[dev]"
    ```
 
-4. Copy `.env.example` to `.env` and add your personal OpenAI API key. Never commit `.env`.
-5. Start the GUI:
+3. Copy the environment template:
 
    ```powershell
-   streamlit run ui/streamlit_app.py
+   Copy-Item .env.example .env
    ```
 
-6. Optionally start the API:
+4. Open `.env` and replace the empty value with your own OpenAI API key:
 
-   ```powershell
-   uvicorn app.api.main:app --reload
+   ```text
+   OPENAI_API_KEY=your-key-here
    ```
 
-## Development
+   Do not share or commit `.env`.
 
-Run all checks with:
+## Start the test environment
+
+Run:
 
 ```powershell
-pytest
-ruff check .
+python -m streamlit run ui/streamlit_app.py
 ```
 
-See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for module ownership and extension rules.
+The first time Streamlit starts, it may ask for an email address. Leave it blank and press **Enter** to continue. Your browser will then open the application.
+
+## Use the test environment
+
+1. **Open Test.** Dashboard, Simulations, and Reports are intentionally disabled. Click **Test**.
+
+   ![Only the Test module is enabled](docs/screenshots/01-test-locked.png)
+
+2. **Start the environment.** Confirm that the sample data, API key, and model show **Ready**, then click **Start environment**. This step does not spend API credits.
+
+   ![Environment readiness screen](docs/screenshots/02-environment-ready.png)
+
+3. **Run a test.** Use the included call-center sample or upload your own CSV. Select a numeric duration column, choose **OpenAI** or **Offline**, and click **Run test**. OpenAI mode makes exactly three bounded API calls.
+
+4. **Review the result.** Use the Overview, AI stages, Evidence, and API usage tabs. You can also download the JSON report.
+
+   ![Completed offline test result](docs/screenshots/03-test-results.png)
+
+## Check your work
+
+```powershell
+python -m pytest
+python -m ruff check .
+```
+
+For project structure and developer responsibilities, see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).

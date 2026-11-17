@@ -38,8 +38,18 @@ class AIStageResult(BaseModel):
     blocking: bool = False
 
 
+class AIUsageRecord(BaseModel):
+    task: str
+    model: str
+    input_tokens: int = 0
+    output_tokens: int = 0
+    total_tokens: int = 0
+
+
 class PipelineResult(BaseModel):
     evidence: EvidencePackage
     analyst: AIStageResult
     interpreter: AIStageResult
     critic: AIStageResult
+    ai_enabled: bool = False
+    usage: list[AIUsageRecord] = Field(default_factory=list)
