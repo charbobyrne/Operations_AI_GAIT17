@@ -9,15 +9,15 @@
 - `app/api`: stable HTTP entry points for future clients.
 - `ui`: presentation and user interaction. Business logic does not belong here.
 
-## Suggested ownership
+## Agent ownership
 
-| Area | Primary owner | First milestone |
+| Agent | Primary owner | Supporting responsibility |
 | --- | --- | --- |
-| Data and statistics | Developer 1 | Validation, distribution fits, test fixtures |
-| AI and evaluation | Developer 2 | OpenAI adapter, prompts, quality/cost benchmark |
-| GUI and integration | Developer 3 | Review flow, charts, session state, API wiring |
+| Data Analyst | Developer 1 | Data quality, deterministic fits, evidence fixtures |
+| Interpreter and Simulation Input | Developer 2 | Grounded explanation, model quality/cost evaluation |
+| Output and Grounding | Charles | Final schema, critic gate, graphs, readable UI output |
 
-Ownership means coordination responsibility, not exclusive access. Every pull request should be reviewed by a developer who does not own that area.
+Ownership means coordination responsibility, not exclusive access. All developers may improve all agents. Every agent must receive a review and a test contribution from a developer who is not its owner. See [TEAM_EXECUTION_PLAN.md](TEAM_EXECUTION_PLAN.md) for deliverables, review rotation, and schedule.
 
 ## Non-negotiable design rules
 

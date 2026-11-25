@@ -65,3 +65,5 @@ python -m ruff check .
 ```
 
 For project structure and developer responsibilities, see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+
+For the three-developer agent ownership, sprint schedule, and definition of done, see [docs/TEAM_EXECUTION_PLAN.md](docs/TEAM_EXECUTION_PLAN.md).

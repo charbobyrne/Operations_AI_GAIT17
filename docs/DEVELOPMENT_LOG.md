@@ -31,3 +31,25 @@ Add one entry for every meaningful repository change. Keep entries concise and n
 - Create versioned evaluation cases for model quality, grounding, latency, and cost.
 - Add persistent sessions and grounded follow-up questions.
 - Decide whether the optional FastAPI boundary is needed for deployment.
+
+## 2026-11-24 - Three-developer execution plan
+
+### Added
+
+- Added `docs/TEAM_EXECUTION_PLAN.md` to coordinate three agent owners while requiring shared review and cross-agent contributions.
+- Assigned primary ownership for the Data Analyst, Interpreter and Simulation Input, and Output and Grounding agents.
+- Defined recommendations for deterministic distribution fitting, model-quality and cost evaluation, final report structure, graph visualizations, shared schemas, pull-request review, and scope control.
+- Added a three-sprint schedule, evaluation scorecard, and core definition of done.
+
+### Validation
+
+- Confirmed local `main` matches `origin/main` before authoring.
+- Reviewed the current schemas, orchestration, analysis, UI, tests, proposal, project requirements, TA feedback, checkpoint guidance, and project-design lecture.
+- `python -m pytest`
+- `python -m ruff check .`
+
+### Next work
+
+- Team reviews and assigns names to each agent-owner role.
+- Agree on stage-specific Pydantic schemas before beginning parallel implementation.
+- Start Sprint 1 with deterministic distribution fitting, chart data, and offline final-report output.
